@@ -1,0 +1,27 @@
+.info {
+
+  background-image: url("../img/general_page/image.png"), radial-gradient(84.34% 50.29% at 48.75% 49.71%, #2950C2 0%, rgba(38, 91, 199, 0.96) 40.62%, rgba(39, 98, 187, 0) 85.42%);
+  height: 339px;
+  padding: 83px 0;
+
+  &__bg {
+
+    height: 100%;
+    background: radial-gradient(84.34% 50.29% at 48.75% 49.71%, #2950C2 0%, rgba(38, 91, 199, 0.96) 40.62%, rgba(39, 98, 187, 0) 85.42%);
+  }
+
+  &__text {
+    background-size: cover;
+    font-size: 18px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.05em;
+max-width: 248px;
+    margin: 0 auto;
+    color: #FFFFFF;
+  }
+  &__text:after{content:""}
+  &__text:before{content:""}
+
+}
+

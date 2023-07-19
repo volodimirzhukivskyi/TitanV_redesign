@@ -1,0 +1,15 @@
+@import "_normalaz";
+@import '_mixin';
+@import 'variables';
+@import 'sections/sections';
+@import 'components/components';
+//@import '_header';
+//@import '_header-description';
+//@import '_section-main';
+//@import '_footer-information';
+*{
+    box-sizing: border-box;
+}
+body{
+    background: url('@img/Header.png')no-repeat;
+}
