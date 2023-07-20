@@ -1,7 +1,20 @@
 .test-info {
   background: url("../img/general_page/rain_bk2.png");
   padding: 40px 12px 13px;
+  position: relative;
   text-align: center;
+  &::after {
+    content: url("../img/general_page/lightning_left.png");
+    position: absolute;
+    right: 0;
+    top:  0;
+  }
+  &::before {
+    content: url("../img/general_page/lightning_right.png");
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
   &__text {
     font-weight: 400;
     font-size: 15px;
@@ -11,7 +24,7 @@
   }
 
   &__text--gold {
-   color: #FFC700;;
+    color: #ffc700;
   }
   &__modal {
     font-size: 16px;
@@ -22,11 +35,11 @@
     background: rgba(243, 243, 242, 0.8);
     border-radius: 20px;
   }
-  &__button{
-    margin:0 auto 52px;
+  &__button {
+    margin: 0 auto 52px;
   }
 }
-.copyright{
+.copyright {
   color: rgba(255, 255, 255, 0.5);
   margin: 0;
   font-size: 10px;

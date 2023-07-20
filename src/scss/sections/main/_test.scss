@@ -1,0 +1,31 @@
+.main {
+  height: calc(100vh - 46px);
+  background: url("../img/rain_bk2.png");
+  position: relative;
+  padding: 25px 0;
+}
+.line {
+  background: rgba(242, 243, 243, 0.6);
+  border-radius: 10.5px;
+  height: 11px;
+  justify-self: baseline;
+  &--green{
+    display: block;
+    width:calc(100% - 93%);
+    background:#3BDE7C;
+  }
+}
+.slide {
+  min-height: 100%;
+  display: flex;
+
+  &__container {
+    width: 260px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  &__content {
+    flex: 1 1 auto;
+  }
+}

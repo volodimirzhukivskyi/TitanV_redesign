@@ -7,21 +7,23 @@
   left: 0;
   right: 0;
   padding: 18px 13px 10px 23px;
-  display: flex;
+  display: none;
   flex-direction: column;
   row-gap: 64px;
+  &.active {
+    display: flex;
+  }
 }
 
 .burger-close {
   align-self: end;
   width: 28px;
   height: 28px;
-  background: url("../img/icon.png") no-repeat;
+  background: url("../img/icons/icon.png") no-repeat;
   background-size: cover;
   border: none;
   text-align: right;
 }
-
 
 .nav {
   display: flex;
@@ -31,7 +33,6 @@
 
   &-item {
     list-style: none;
-
   }
 
   &-link {
@@ -39,13 +40,11 @@
     font-size: 16px;
     line-height: 22px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
-
   }
 
   &-link:focus {
-    color: #F4CE0C;;
+    color: #f4ce0c;
   }
 }
-
