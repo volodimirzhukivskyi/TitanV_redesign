@@ -1,6 +1,6 @@
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-
+const slides = [{ question: "ваш пол:", questions: ["Мужчина", "Женщина"] }];
 const startTest = () => {
   main.textContent = "";
   footer.textContent = "";
@@ -26,11 +26,19 @@ function printSlideContainer() {
   );
 }
 function printSlideContent(slideCounter, array) {
-  //   const slide = array[slideCounter];
-  const slide = slideCounter;
+    const slide = array[slideCounter];
 
   if (slide) {
-    console.log(`prinSlide - ${slideCounter}`);
+    const { question, questions } = slide;
+    const slideContent = document.getElementById("slide__content");
+    const inputValues = questions.reduce((acum, next) => {
+          acum += ` <div>
+                    <input type="checkbox" id="scales" name="scales" checked>
+                    <label for="scales">${next}</label>
+                </div>`;
+                return acum
+      }, "");
+    slideContent.insertAdjacentHTML("afterbegin", `<h2>${question}</h2>${inputValues}`);
   } else {
     //TODO end page
   }
@@ -38,10 +46,10 @@ function printSlideContent(slideCounter, array) {
 function changeSlide() {
   let counter = 0;
 
-  printSlideContent(counter);
+  printSlideContent(counter, slides);
   function changeCounter() {
     counter++;
-    printSlideContent(counter);
+    printSlideContent(counter, slides);
   }
   return changeCounter;
 }
