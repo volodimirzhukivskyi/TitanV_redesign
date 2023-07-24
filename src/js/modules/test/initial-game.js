@@ -1,44 +1,45 @@
+import { printSlideContainer } from "./print_elements.js";
+import { ADD_STYLE, REMOVE_STYLE, SLIDES } from "./constans.js";
+import { changeNextBtnCss, nextBtnHandler } from "./next_slide.js";
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
-const slides = [{ question: "ваш пол:", questions: ["Мужчина", "Женщина"] }];
+
 const startTest = () => {
   main.textContent = "";
   footer.textContent = "";
   printSlideContainer();
   const nextSlide = document.querySelector(".slide__button");
-  const changeCounter = changeSlide();
-  nextSlide.onclick = changeCounter;
+  // const changeCounter = () => ;
+  //TODO виправити проблему з хендлером використавши можливість прив'язати контекст.
+  // nextSlide.onclick =nextBtnHandler(nextSlide,changeSlide()) ;
 };
-function printSlideContainer() {
-  main.className = "main";
-  main.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="slide">
-        <div class="slide__container">
-        <div class="line">
-             <span class="line line--green">
-        </div>
-         <div id="slide__content" class="slide__content"></div>
-         </span><button class="button  button--gray slide__button">далее</button>
-    </div>
-    </div>
-    >`,
-  );
-}
+
 function printSlideContent(slideCounter, array) {
-    const slide = array[slideCounter];
+  const slide_content = document.getElementById("slide__content");
+  slide_content.textContent = "";
+  const slide = array[slideCounter];
 
   if (slide) {
     const { question, questions } = slide;
     const slideContent = document.getElementById("slide__content");
-    const inputValues = questions.reduce((acum, next) => {
-          acum += ` <div>
-                    <input type="checkbox" id="scales" name="scales" checked>
-                    <label for="scales">${next}</label>
-                </div>`;
-                return acum
-      }, "");
-    slideContent.insertAdjacentHTML("afterbegin", `<h2>${question}</h2>${inputValues}`);
+    const inputValues = questions.reduce((acum, next, i, arr) => {
+      acum += `
+                    <input type="radio" class="custom-radio" id=${next}  name="scales" >
+                    <label class="input" for=${next}>${next}</label>
+                `;
+      return acum;
+    }, "");
+    slideContent.insertAdjacentHTML(
+      "afterbegin",
+      `<h2 class="slide__title">${question}</h2><div class="inputs">${inputValues}</div>`,
+    );
+    const inputs = document.querySelector(".inputs");
+    inputs.addEventListener("change", () => {
+      const slideBtn = document.querySelector(".slide__button");
+
+      changeNextBtnCss(slideBtn, REMOVE_STYLE);
+      slideBtn.disabled = false;
+    });
   } else {
     //TODO end page
   }
@@ -46,10 +47,10 @@ function printSlideContent(slideCounter, array) {
 function changeSlide() {
   let counter = 0;
 
-  printSlideContent(counter, slides);
+  printSlideContent(counter, SLIDES);
   function changeCounter() {
     counter++;
-    printSlideContent(counter, slides);
+    printSlideContent(counter, SLIDES);
   }
   return changeCounter;
 }

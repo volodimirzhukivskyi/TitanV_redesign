@@ -9,16 +9,21 @@
   border-radius: 10.5px;
   height: 11px;
   justify-self: baseline;
-  &--green{
+  &--green {
     display: block;
-    width:calc(100% - 93%);
-    background:#3BDE7C;
+    width: calc(100% - 93%);
+    background: #3bde7c;
   }
 }
 .slide {
   min-height: 100%;
   display: flex;
-
+  &__title {
+    line-height: 31px;
+    letter-spacing: 0.95px;
+   margin: 28px 0;
+    font-size: 19px;
+  }
   &__container {
     width: 260px;
     margin: 0 auto;
@@ -26,6 +31,74 @@
     flex-direction: column;
   }
   &__content {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
     flex: 1 1 auto;
   }
+}
+.input {
+  flex: 1;
+  max-height: 50px;
+  background-color: rgba(242, 243, 243, 0.15);
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 39px;
+}
+.inputs {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+ .custom-radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+/* для элемента label связанного с .custom-radio */
+.custom-radio+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+/* создание в label псевдоэлемента  before со следующими стилями */
+.custom-radio+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+/* стили при наведении курсора на радио */
+.custom-radio:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+/* стили для активной радиокнопки (при нажатии на неё) */
+.custom-radio:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+.custom-radio:checked+label::before {
+  border-color: rgba(39, 39, 39, 1);
+  background-color: rgba(41, 80, 194, 1);
+}
+.custom-radio:checked+label {
+  background-color: #FFC700;
+}
+/* стили для радиокнопки, находящейся в состоянии disabled */
+.custom-radio:disabled+label::before {
+  background-color: #e9ecef;
 }
