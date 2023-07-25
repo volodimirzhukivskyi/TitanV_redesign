@@ -4,16 +4,20 @@ import { changeNextBtnCss, nextBtnHandler } from "./next_slide.js";
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
+const allBtns = document.querySelectorAll(".button");
+
 const startTest = () => {
   main.textContent = "";
   footer.textContent = "";
   printSlideContainer();
+  printSlideContent(0, SLIDES);
   const nextSlide = document.querySelector(".slide__button");
-  // const changeCounter = () => ;
+  const changeCounter = nextBtnHandler.bind(nextSlide, changeSlide());
   //TODO виправити проблему з хендлером використавши можливість прив'язати контекст.
-  // nextSlide.onclick =nextBtnHandler(nextSlide,changeSlide()) ;
+  nextSlide.onclick = changeCounter;
 };
-
+allBtns.forEach((btn) => (btn.onclick = startTest));
+// --- Start game
 function printSlideContent(slideCounter, array) {
   const slide_content = document.getElementById("slide__content");
   slide_content.textContent = "";
@@ -47,12 +51,12 @@ function printSlideContent(slideCounter, array) {
 function changeSlide() {
   let counter = 0;
 
-  printSlideContent(counter, SLIDES);
   function changeCounter() {
     counter++;
     printSlideContent(counter, SLIDES);
   }
-  return changeCounter;
+  function getCounter() {
+    return counter;
+  }
+  return { changeCounter,getCounter };
 }
-const allBtns = document.querySelectorAll(".button");
-allBtns.forEach((btn) => (btn.onclick = startTest));
