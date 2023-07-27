@@ -20,6 +20,7 @@
     "browser-sync": "latest",
     "del": "latest",
     "fs": "latest",
+    "gh-pages": "^5.0.0",
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
     "gulp-clean-css": "latest",

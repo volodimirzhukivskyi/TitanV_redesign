@@ -532,7 +532,7 @@ template {
   height: calc(100vh - 46px);
   background: url("../img/rain_bk2.png");
   position: relative;
-  padding: 25px 0;
+  padding: 20px;
 }
 
 .line {
@@ -552,7 +552,7 @@ template {
   display: flex;
 }
 .slide__title {
-  line-height: 31px;
+  line-height: 23px;
   letter-spacing: 0.95px;
   margin: 28px 0;
   font-size: 19px;
@@ -586,7 +586,25 @@ template {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.activeBtn {
+  border: 3px solid gold;
+}
+
+.colorblock {
+  box-sizing: border-box;
+}
+
+.question_content {
   margin-bottom: 36px;
+}
+
+.picture {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 21px 24px;
 }
 
 .custom-radio {

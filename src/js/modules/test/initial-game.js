@@ -1,6 +1,6 @@
-import { printSlideContainer } from "./print_elements.js";
-import { ADD_STYLE, REMOVE_STYLE, SLIDES } from "./constans.js";
+import { REMOVE_STYLE, SLIDES } from "./constans.js";
 import { changeNextBtnCss, nextBtnHandler } from "./next_slide.js";
+import { printQuestionEl, printSlideContainer } from "./print_elements.js";
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
@@ -24,25 +24,36 @@ function printSlideContent(slideCounter, array) {
   const slide = array[slideCounter];
 
   if (slide) {
-    const { question, questions } = slide;
+    const { question, questions, type } = slide;
     const slideContent = document.getElementById("slide__content");
     const inputValues = questions.reduce((acum, next, i, arr) => {
-      acum += `
-                    <input type="radio" class="custom-radio" id=${next}  name="scales" >
-                    <label class="input" for=${next}>${next}</label>
-                `;
+      acum += printQuestionEl(type, next);
       return acum;
     }, "");
     slideContent.insertAdjacentHTML(
       "afterbegin",
-      `<h2 class="slide__title">${question}</h2><div class="inputs">${inputValues}</div>`,
+      `<h2 class="slide__title">${question}</h2><div class="question_content ${type}">${inputValues}</div>`,
     );
-    const inputs = document.querySelector(".inputs");
-    inputs.addEventListener("change", () => {
-      const slideBtn = document.querySelector(".slide__button");
+    const questionContent = document.querySelector(".question_content");
+    // questionContent.addEventListener("change", () => {
+    //   const slideBtn = document.querySelector(".slide__button");
 
-      changeNextBtnCss(slideBtn, REMOVE_STYLE);
-      slideBtn.disabled = false;
+    //   changeNextBtnCss(slideBtn, REMOVE_STYLE);
+    //   slideBtn.disabled = false;
+    // });
+    questionContent.addEventListener("click", (e) => {
+      if (e.target.tagName === "INPUT") {
+        console.log(e.target.type);
+        if (event.target.type === "button") {
+          const prevBtn = document.querySelector(".activeBtn");
+          prevBtn?.classList.remove("activeBtn")
+          e.target.classList.add("activeBtn");
+        }
+        const slideBtn = document.querySelector(".slide__button");
+
+        changeNextBtnCss(slideBtn, REMOVE_STYLE);
+        slideBtn.disabled = false;
+      }
     });
   } else {
     //TODO end page
@@ -58,5 +69,5 @@ function changeSlide() {
   function getCounter() {
     return counter;
   }
-  return { changeCounter,getCounter };
+  return { changeCounter, getCounter };
 }
