@@ -13,8 +13,21 @@ export function printSlideContainer() {
           <button disabled class="button  button--gray slide__button">далее</button>
       </div>
       </div>
-      >`,
+        `,
   );
+}
+export function addHeaderContent(title,className="") {
+  const header = document.querySelector("header");
+  const titleHeader = header.querySelector(".header__title");
+  if (!titleHeader) {
+    header.insertAdjacentHTML(
+      "beforeend",
+      `<img class="header__img" src="./img/rain_bk3.png"/><h2 class="header__title ${className}">${title}
+    </h2>`,
+    );
+  } else {
+    titleHeader.textContent = title;
+  }
 }
 export function printQuestionEl(type, payload) {
   switch (type) {
@@ -25,6 +38,9 @@ export function printQuestionEl(type, payload) {
     case "picture": {
       return `<input style="background-color:${payload} ;" class="colorblock" type="button"/>
     `;
+    }
+    case "numberBlock": {
+      return `<input class="colorblock numberBlock__item" type="button" value=${payload}>`;
     }
     default:
       break;

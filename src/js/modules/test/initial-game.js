@@ -1,14 +1,18 @@
 import { REMOVE_STYLE, SLIDES } from "./constans.js";
 import { changeNextBtnCss, nextBtnHandler } from "./next_slide.js";
-import { printQuestionEl, printSlideContainer } from "./print_elements.js";
+import {
+  printQuestionEl,
+  printSlideContainer,
+  addHeaderContent,
+} from "./print_elements.js";
 const main = document.querySelector("main");
 const footer = document.querySelector("footer");
 
 const allBtns = document.querySelectorAll(".button");
-
 const startTest = () => {
   main.textContent = "";
   footer.textContent = "";
+  addHeaderContent("тест на определение IQ");
   printSlideContainer();
   printSlideContent(0, SLIDES);
   const nextSlide = document.querySelector(".slide__button");
@@ -19,44 +23,75 @@ const startTest = () => {
 allBtns.forEach((btn) => (btn.onclick = startTest));
 // --- Start game
 function printSlideContent(slideCounter, array) {
-  const slide_content = document.getElementById("slide__content");
-  slide_content.textContent = "";
+  const slideContent = document.getElementById("slide__content");
+  const slideBtn = document.querySelector(".slide__button");
+  slideContent.textContent = "";
   const slide = array[slideCounter];
 
   if (slide) {
-    const { question, questions, type } = slide;
-    const slideContent = document.getElementById("slide__content");
+    const { question, questions, type, img } = slide;
+
     const inputValues = questions.reduce((acum, next, i, arr) => {
       acum += printQuestionEl(type, next);
       return acum;
     }, "");
     slideContent.insertAdjacentHTML(
       "afterbegin",
-      `<h2 class="slide__title">${question}</h2><div class="question_content ${type}">${inputValues}</div>`,
+      `<h2   class="slide__title">${question}</h2>${
+        img ? img : ""
+      }<div class="question_content ${type}">${inputValues}</div>`,
     );
     const questionContent = document.querySelector(".question_content");
-    // questionContent.addEventListener("change", () => {
-    //   const slideBtn = document.querySelector(".slide__button");
 
-    //   changeNextBtnCss(slideBtn, REMOVE_STYLE);
-    //   slideBtn.disabled = false;
-    // });
     questionContent.addEventListener("click", (e) => {
       if (e.target.tagName === "INPUT") {
-        console.log(e.target.type);
         if (event.target.type === "button") {
           const prevBtn = document.querySelector(".activeBtn");
-          prevBtn?.classList.remove("activeBtn")
+          prevBtn?.classList.remove("activeBtn");
           e.target.classList.add("activeBtn");
         }
-        const slideBtn = document.querySelector(".slide__button");
 
         changeNextBtnCss(slideBtn, REMOVE_STYLE);
         slideBtn.disabled = false;
       }
     });
   } else {
-    //TODO end page
+    slideBtn.remove();
+    slideContent.insertAdjacentHTML(
+      "afterBegin",
+      `<h2 class="slide__title">Обработка результатов</h2>
+   <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+    <p>Определение стиля мышления...........
+        .... ...................................................</p>`,
+    );
+    setTimeout(() => {
+      slideBtn.remove();
+      slideContent.insertAdjacentHTML(
+        "afterBegin",
+        `<h2 class="slide__title">Ваш результат рассчитан:</h2>
+     <p><u>вы относитесь к 3%</u> респондентов, чей уровень интеллекта более чем на
+     15 пунктов отличается от среднего в большую или меньшую сторону! </p>
+     <h2 class="slide__title">Скорее получите свой результат!
+     </h2>
+     <p>В целях защиты персональных
+     данных результат теста, их подробная интерпретация и рекомендации доступны в виде голосового сообщения по звонку с вашего мобильного телефона
+     </p>
+     <p>Звоните скорее, запись доступна всего <br><span>10:00</span> минут
+
+     </p>
+     <a href=""></a>
+     `,
+      );}, 2000);
   }
 }
 function changeSlide() {

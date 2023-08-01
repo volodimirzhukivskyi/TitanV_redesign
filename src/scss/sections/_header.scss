@@ -5,6 +5,17 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
+  gap: 10px;
+  &__img {
+    max-height: 100%;
+  }
+  &__title {
+    color: #ffc700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    word-wrap: break-word;
+  }
 }
 
 .burger {

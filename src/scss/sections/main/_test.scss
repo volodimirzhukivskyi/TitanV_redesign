@@ -1,3 +1,4 @@
+
 .main {
   height: calc(100vh - 46px);
   background: url("../img/rain_bk2.png");
@@ -19,16 +20,17 @@
   min-height: 100%;
   display: flex;
   &__title {
-    line-height: 23px;
-    letter-spacing: 0.95px;
-   margin: 28px 0;
-    font-size: 19px;
+    line-height: 20px;
+    letter-spacing: 0.35px;
+    margin-top: 28px;
+    font-size: 18px;
   }
   &__container {
     width: 260px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
   &__content {
     text-align: center;
@@ -40,49 +42,73 @@
 }
 .input {
   flex: 1;
-  max-height: 50px;
+  max-height: 60px;
   background-color: rgba(242, 243, 243, 0.15);
   padding: 0 28px;
   display: flex;
   align-items: center;
-  gap: 39px;
+  gap: 10px;
 }
 .inputs {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
-
 }
-.activeBtn{
+.colorblock.activeBtn {
   border: 3px solid gold;
 }
-.colorblock{
+.colorblock {
+  box-sizing: border-box;
+  border: 3px solid transparent;
   box-sizing: border-box;
 }
-.question_content{
-  margin-bottom: 36px;
+.question_content {
+  margin:15px 0 ;
 }
-.picture{
+.picture {
   height: 100%;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:21px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 21px 24px;
 }
- .custom-radio {
+.numberBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 100%;
+  margin: 0;
+  gap: 5px;
+  &__item {
+    border:3px solid transparent;
+    width: 41px;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: black;
+  }
+}
+.test-img {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.custom-radio {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 /* для элемента label связанного с .custom-radio */
-.custom-radio+label {
+.custom-radio + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
 /* создание в label псевдоэлемента  before со следующими стилями */
-.custom-radio+label::before {
-  content: '';
+.custom-radio + label::before {
+  content: "";
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -96,24 +122,110 @@
   background-size: 50% 50%;
 }
 /* стили при наведении курсора на радио */
-.custom-radio:not(:disabled):not(:checked)+label:hover::before {
+.custom-radio:not(:disabled):not(:checked) + label:hover::before {
   border-color: #b3d7ff;
 }
 /* стили для активной радиокнопки (при нажатии на неё) */
-.custom-radio:not(:disabled):active+label::before {
+.custom-radio:not(:disabled):active + label::before {
   background-color: #b3d7ff;
   border-color: #b3d7ff;
 }
 
 /* стили для радиокнопки, находящейся в состоянии checked */
-.custom-radio:checked+label::before {
+.custom-radio:checked + label::before {
   border-color: rgba(39, 39, 39, 1);
   background-color: rgba(41, 80, 194, 1);
 }
-.custom-radio:checked+label {
-  background-color: #FFC700;
+.custom-radio:checked + label {
+  background-color: #ffc700;
 }
 /* стили для радиокнопки, находящейся в состоянии disabled */
-.custom-radio:disabled+label::before {
+.custom-radio:disabled + label::before {
   background-color: #e9ecef;
+}
+//////////////Slider//////////////////
+.lds-roller {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
