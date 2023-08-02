@@ -38,6 +38,7 @@ export function finishSlide() {
     slideContent.textContent = "";
     addHeaderContent("ГоТОВО!");
     slideContent.insertAdjacentHTML("afterBegin", slideLayout(FINISH_SLIDE));
+    slideContent.classList.add("finish-slide")
   }, 2000);
 }
 export function printSlideContent(slideCounter, array) {

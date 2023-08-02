@@ -157,6 +157,23 @@
   max-width: 100%;
   margin: 0 auto;
 }
+.finish-slide{
+  z-index: 0;
+}
+.finish-slide::before {
+  content: url(../img/general_page/lightning_right.png);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+.finish-slide::after {
+  content: url(../img/general_page/lightning_left.png);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
 .custom-radio {
   position: absolute;
   z-index: -1;

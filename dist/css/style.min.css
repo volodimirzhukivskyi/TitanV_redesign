@@ -346,6 +346,7 @@ template {
 }
 
 .hide-block {
+  z-index: 1;
   background: #181818;
   height: 100%;
   position: absolute;
@@ -399,6 +400,7 @@ template {
   padding: 27px 0 11px;
 }
 .hero__button {
+  cursor: pointer;
   margin-bottom: 20px;
 }
 .hero__text {
@@ -430,6 +432,9 @@ template {
   font-size: 15px;
   line-height: 19px;
   letter-spacing: 0.05em;
+}
+.hero-more {
+  text-decoration: none;
 }
 .hero-more__title {
   font-size: 8px;
@@ -470,6 +475,7 @@ template {
 }
 
 .preference {
+  background-color: white;
   padding: 38px 10px;
   display: flex;
   flex-direction: column;
@@ -707,6 +713,26 @@ template {
   margin: 0 auto;
 }
 
+.finish-slide {
+  z-index: 0;
+}
+
+.finish-slide::before {
+  content: url(../img/general_page/lightning_right.png);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.finish-slide::after {
+  content: url(../img/general_page/lightning_left.png);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 .custom-radio {
   position: absolute;
   z-index: -1;
@@ -867,6 +893,7 @@ template {
   }
 }
 .button {
+  cursor: pointer;
   margin: 0 auto;
   padding: 14px 0 11px;
   width: 189px;
@@ -905,6 +932,10 @@ template {
 }
 .button__circle:after {
   content: url("../img/general_page/icon.png");
+}
+
+html {
+  background-color: black;
 }
 
 * {

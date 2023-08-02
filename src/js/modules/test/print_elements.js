@@ -34,8 +34,8 @@ export function addHeaderContent(title, className = "") {
 export function printQuestionEl(type, payload) {
   switch (type) {
     case "inputs": {
-      return `<input type="radio" class="custom-radio" id=${payload}  name="scales" >
-    <label class="input" for=${payload}>${payload}</label>`;
+      return `<input type="radio" class="custom-radio" id="${payload}"  name="scales" >
+    <label class="input" for="${payload}">${payload}</label>`;
     }
     case "picture": {
       return `<input style="background-color:${payload} ;" class="colorblock" type="button"/>
