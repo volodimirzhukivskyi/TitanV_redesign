@@ -1,4 +1,4 @@
-import { ADD_STYLE, REMOVE_STYLE } from "../constans.js";
+import { ADD_STYLE, REMOVE_STYLE, SLIDES } from "../constans.js";
 
 export function nextBtnHandler(changeSlide) {
   changeNextBtnCss(this, ADD_STYLE);
@@ -7,7 +7,8 @@ export function nextBtnHandler(changeSlide) {
 }
 export function changeStyleLine(counter) {
   const line = document.querySelector(".line--green");
-  line.style.width = `${counter}0%`;
+  const percentLine=(counter/SLIDES.length)*100;
+  line.style.width = `${percentLine}%`;
 }
 export const checkBtnStyle = (e) => {
   const slideBtn = document.querySelector(".slide__button");

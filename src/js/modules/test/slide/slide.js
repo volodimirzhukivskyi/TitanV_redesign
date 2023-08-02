@@ -32,8 +32,9 @@ export function loaderSlide() {
 }
 export function finishSlide() {
   const slideContent = document.getElementById("slide__content");
-
+  const line = document.querySelector(".line");
   setTimeout(() => {
+    line.remove();
     slideContent.textContent = "";
     addHeaderContent("ГоТОВО!");
     slideContent.insertAdjacentHTML("afterBegin", slideLayout(FINISH_SLIDE));
@@ -52,14 +53,14 @@ export function printSlideContent(slideCounter, array) {
   }
 }
 export function changeSlide() {
-    let counter = 0;
+  let counter = 0;
 
-    function changeCounter() {
-      counter++;
-      printSlideContent(counter, SLIDES);
-    }
-    function getCounter() {
-      return counter;
-    }
-    return { changeCounter, getCounter };
+  function changeCounter() {
+    counter++;
+    printSlideContent(counter, SLIDES);
   }
+  function getCounter() {
+    return counter;
+  }
+  return { changeCounter, getCounter };
+}
