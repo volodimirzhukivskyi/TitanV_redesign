@@ -540,10 +540,11 @@ template {
 }
 
 .main {
-  height: calc(100vh - 46px);
-  background: url("../img/rain_bk2.png");
-  position: relative;
+  min-height: calc(100vh - 46px);
+  background: url(../img/rain_bk2.png);
   padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .line {
@@ -581,6 +582,66 @@ template {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+}
+
+.finish-slide__title {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+  word-wrap: break-word;
+}
+.finish-slide__title--green {
+  color: #3bde7c;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 1.8px;
+}
+.finish-slide__info {
+  color: #3bde7c;
+  font-size: 11px;
+  font-family: PT Serif;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 1.1px;
+}
+.finish-slide__number {
+  font-size: 30px;
+}
+.finish-slide__phone {
+  padding: 21px;
+  background: red;
+  display: flex;
+  gap: 18px;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+.finish-slide__phone-text {
+  color: white;
+  font-size: 15px;
+  font-family: Roboto;
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: 0.75px;
+  word-wrap: break-word;
+  margin: 0;
+}
+.finish-slide__alert {
+  color: white;
+  font-size: 8px;
+  font-family: Roboto;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 14px;
+  letter-spacing: 2px;
+  background-color: #1c2741;
+  border-radius: 6px;
+  padding: 15px 12px;
+}
+.finish-slide__text {
+  margin: 0;
 }
 
 .input {
@@ -851,5 +912,8 @@ template {
 }
 
 body {
+  max-width: 320px;
+  margin: 0 auto;
   background: url("../img/Header.png") no-repeat;
+  position: relative;
 }

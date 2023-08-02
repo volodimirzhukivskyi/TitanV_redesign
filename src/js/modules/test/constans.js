@@ -79,11 +79,15 @@ export const SLIDES = [
   // },
   {
     question: `Вставьте подходящее число`,
-    questions: [12, 22, 32,32, 43, 46, 45],
+    questions: [12, 22, 32, 32, 43, 46, 45],
     img: `<div ><img class="test-img" src="./img/test/star.png"/></div>`,
     type: "numberBlock",
   },
-
 ];
+////////////////Style buttons////////////////////////
 export const ADD_STYLE = "ADD_STYLE";
 export const REMOVE_STYLE = "REMOVE_STYLE";
+/////////////////Slide change////////////////////////
+
+export const LOADER_SLIDE = "LOADER_SLIDE";
+export const FINISH_SLIDE = "FINISH_SLIDE";
